@@ -1,0 +1,17 @@
+# Secrets
+.env
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+*.egg-info/
+
+# Test artifacts (not needed in production image)
+.pytest_cache/
+tests/

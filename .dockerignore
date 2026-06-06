@@ -1,0 +1,30 @@
+# Git
+.git
+.gitignore
+
+# Secrets — never bake into images
+.env
+.env.local
+data/
+
+# Frontend build artifacts (built inside the container)
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/.env
+
+# Python cache
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Docs (not needed in runtime image)
+README.md
+CLAUDE.md
+Wint_API_Doc/

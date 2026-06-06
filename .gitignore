@@ -1,0 +1,36 @@
+# Environment — never commit real credentials
+.env
+.env.local
+.env.*.local
+
+# Encryption key — back this up separately; never commit it
+data/config.json
+data/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.venv/
+venv/
+.Python
+dist/
+build/
+
+# Node
+node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

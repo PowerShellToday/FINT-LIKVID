@@ -1,0 +1,286 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap');
+@plugin "tailwindcss-animate";
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-background: hsl(0 0% 98%);
+  --color-foreground: hsl(222.2 84% 4.9%);
+  --color-card: hsl(0 0% 100%);
+  --color-card-foreground: hsl(222.2 84% 4.9%);
+  --color-popover: hsl(0 0% 100%);
+  --color-popover-foreground: hsl(222.2 84% 4.9%);
+  --color-primary: hsl(221.2 83.2% 53.3%);
+  --color-primary-foreground: hsl(210 40% 98%);
+  --color-secondary: hsl(210 40% 96.1%);
+  --color-secondary-foreground: hsl(222.2 47.4% 11.2%);
+  --color-muted: hsl(210 40% 96.1%);
+  --color-muted-foreground: hsl(215.4 16.3% 46.9%);
+  --color-accent: hsl(210 40% 96.1%);
+  --color-accent-foreground: hsl(222.2 47.4% 11.2%);
+  --color-destructive: hsl(0 84.2% 60.2%);
+  --color-destructive-foreground: hsl(210 40% 98%);
+  --color-border: hsl(214.3 31.8% 91.4%);
+  --color-input: hsl(214.3 31.8% 91.4%);
+  --color-ring: hsl(221.2 83.2% 53.3%);
+  --radius: 0.5rem;
+}
+
+/* CSS variables for non-Tailwind usage (recharts, etc.) */
+:root {
+  --primary: 221.2 83.2% 53.3%;
+  --primary-foreground: 210 40% 98%;
+  --background: 0 0% 98%;
+  --foreground: 222.2 84% 4.9%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --border: 214.3 31.8% 91.4%;
+  --radius: 0.5rem;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+html {
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  margin: 0;
+  font-family: inherit;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100svh;
+}
+
+/* ── Default dark ────────────────────────────────────────────────────────────── */
+
+html.dark {
+  --color-background: hsl(222.2 84% 4.9%);
+  --color-foreground: hsl(210 40% 98%);
+  --color-card: hsl(222.2 84% 4.9%);
+  --color-card-foreground: hsl(210 40% 98%);
+  --color-popover: hsl(222.2 84% 4.9%);
+  --color-popover-foreground: hsl(210 40% 98%);
+  --color-primary: hsl(217.2 91.2% 59.8%);
+  --color-primary-foreground: hsl(222.2 47.4% 11.2%);
+  --color-secondary: hsl(217.2 32.6% 17.5%);
+  --color-secondary-foreground: hsl(210 40% 98%);
+  --color-muted: hsl(217.2 32.6% 17.5%);
+  --color-muted-foreground: hsl(215 20.2% 65.1%);
+  --color-accent: hsl(217.2 32.6% 17.5%);
+  --color-accent-foreground: hsl(210 40% 98%);
+  --color-destructive: hsl(0 62.8% 30.6%);
+  --color-destructive-foreground: hsl(210 40% 98%);
+  --color-border: hsl(217.2 32.6% 17.5%);
+  --color-input: hsl(217.2 32.6% 17.5%);
+  --color-ring: hsl(224.3 76.3% 48%);
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --border: 217.2 32.6% 17.5%;
+  --primary: 217.2 91.2% 59.8%;
+  --primary-foreground: 222.2 47.4% 11.2%;
+}
+
+/* ── Matrix light ────────────────────────────────────────────────────────────── */
+
+html[data-theme="matrix"] {
+  --color-background: hsl(120 15% 97%);
+  --color-foreground: hsl(120 80% 15%);
+  --color-card: hsl(120 15% 100%);
+  --color-card-foreground: hsl(120 80% 15%);
+  --color-popover: hsl(120 15% 100%);
+  --color-popover-foreground: hsl(120 80% 15%);
+  --color-primary: hsl(120 70% 35%);
+  --color-primary-foreground: hsl(120 100% 96%);
+  --color-secondary: hsl(120 20% 92%);
+  --color-secondary-foreground: hsl(120 80% 15%);
+  --color-muted: hsl(120 20% 92%);
+  --color-muted-foreground: hsl(120 40% 40%);
+  --color-accent: hsl(120 20% 92%);
+  --color-accent-foreground: hsl(120 80% 15%);
+  --color-destructive: hsl(0 84% 60%);
+  --color-destructive-foreground: hsl(0 0% 98%);
+  --color-border: hsl(120 30% 82%);
+  --color-input: hsl(120 30% 82%);
+  --color-ring: hsl(120 70% 35%);
+  --radius: 0rem;
+  --background: 120 15% 97%;
+  --foreground: 120 80% 15%;
+  --muted: 120 20% 92%;
+  --muted-foreground: 120 40% 40%;
+  --border: 120 30% 82%;
+  --primary: 120 70% 35%;
+  --primary-foreground: 120 100% 96%;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* ── Matrix dark ─────────────────────────────────────────────────────────────── */
+
+html[data-theme="matrix"].dark {
+  --color-background: hsl(0 0% 0%);
+  --color-foreground: hsl(120 100% 50%);
+  --color-card: hsl(0 0% 3%);
+  --color-card-foreground: hsl(120 100% 50%);
+  --color-popover: hsl(0 0% 5%);
+  --color-popover-foreground: hsl(120 100% 50%);
+  --color-primary: hsl(120 100% 40%);
+  --color-primary-foreground: hsl(0 0% 0%);
+  --color-secondary: hsl(0 0% 8%);
+  --color-secondary-foreground: hsl(120 80% 60%);
+  --color-muted: hsl(0 0% 8%);
+  --color-muted-foreground: hsl(120 50% 40%);
+  --color-accent: hsl(0 0% 10%);
+  --color-accent-foreground: hsl(120 100% 50%);
+  --color-destructive: hsl(0 100% 50%);
+  --color-destructive-foreground: hsl(0 0% 0%);
+  --color-border: hsl(120 80% 20%);
+  --color-input: hsl(0 0% 8%);
+  --color-ring: hsl(120 100% 40%);
+  --radius: 0rem;
+  --background: 0 0% 0%;
+  --foreground: 120 100% 50%;
+  --muted: 0 0% 8%;
+  --muted-foreground: 120 50% 40%;
+  --border: 120 80% 20%;
+  --primary: 120 100% 40%;
+  --primary-foreground: 0 0% 0%;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* ── Solarized light ─────────────────────────────────────────────────────────── */
+
+html[data-theme="solarized"] {
+  --color-background: hsl(44 87% 94%);
+  --color-foreground: hsl(194 14% 40%);
+  --color-card: hsl(44 43% 91%);
+  --color-card-foreground: hsl(194 14% 35%);
+  --color-popover: hsl(44 43% 91%);
+  --color-popover-foreground: hsl(194 14% 35%);
+  --color-primary: hsl(205 69% 49%);
+  --color-primary-foreground: hsl(44 87% 97%);
+  --color-secondary: hsl(44 43% 88%);
+  --color-secondary-foreground: hsl(194 14% 40%);
+  --color-muted: hsl(44 43% 90%);
+  --color-muted-foreground: hsl(180 7% 55%);
+  --color-accent: hsl(44 43% 88%);
+  --color-accent-foreground: hsl(194 14% 40%);
+  --color-destructive: hsl(1 71% 52%);
+  --color-destructive-foreground: hsl(44 87% 97%);
+  --color-border: hsl(44 43% 82%);
+  --color-input: hsl(44 43% 82%);
+  --color-ring: hsl(205 69% 49%);
+  --radius: 0.375rem;
+  --background: 44 87% 94%;
+  --foreground: 194 14% 40%;
+  --muted: 44 43% 90%;
+  --muted-foreground: 180 7% 55%;
+  --border: 44 43% 82%;
+  --primary: 205 69% 49%;
+  --primary-foreground: 44 87% 97%;
+}
+
+/* ── Solarized dark ──────────────────────────────────────────────────────────── */
+
+html[data-theme="solarized"].dark {
+  --color-background: hsl(193 100% 11%);
+  --color-foreground: hsl(186 8% 55%);
+  --color-card: hsl(192 100% 14%);
+  --color-card-foreground: hsl(180 7% 60%);
+  --color-popover: hsl(193 100% 9%);
+  --color-popover-foreground: hsl(180 7% 60%);
+  --color-primary: hsl(205 69% 49%);
+  --color-primary-foreground: hsl(193 100% 11%);
+  --color-secondary: hsl(192 100% 17%);
+  --color-secondary-foreground: hsl(186 8% 55%);
+  --color-muted: hsl(192 100% 17%);
+  --color-muted-foreground: hsl(194 14% 40%);
+  --color-accent: hsl(192 100% 17%);
+  --color-accent-foreground: hsl(180 7% 60%);
+  --color-destructive: hsl(1 71% 52%);
+  --color-destructive-foreground: hsl(44 87% 97%);
+  --color-border: hsl(192 100% 18%);
+  --color-input: hsl(192 100% 17%);
+  --color-ring: hsl(205 69% 49%);
+  --radius: 0.375rem;
+  --background: 193 100% 11%;
+  --foreground: 186 8% 55%;
+  --muted: 192 100% 17%;
+  --muted-foreground: 194 14% 40%;
+  --border: 192 100% 18%;
+  --primary: 205 69% 49%;
+  --primary-foreground: 193 100% 11%;
+}
+
+/* ── Wint light ──────────────────────────────────────────────────────────────── */
+
+html[data-theme="fint"] {
+  --color-background: hsl(34 53% 94%);
+  --color-foreground: hsl(8 15% 21%);
+  --color-card: hsl(0 0% 100%);
+  --color-card-foreground: hsl(8 15% 21%);
+  --color-popover: hsl(0 0% 100%);
+  --color-popover-foreground: hsl(8 15% 21%);
+  --color-primary: hsl(198 100% 68%);
+  --color-primary-foreground: hsl(8 15% 21%);
+  --color-secondary: hsl(32 45% 89%);
+  --color-secondary-foreground: hsl(8 15% 21%);
+  --color-muted: hsl(32 45% 89%);
+  --color-muted-foreground: hsl(8 8% 48%);
+  --color-accent: hsl(194 87% 91%);
+  --color-accent-foreground: hsl(8 15% 21%);
+  --color-destructive: hsl(0 84% 60%);
+  --color-destructive-foreground: hsl(0 0% 98%);
+  --color-border: hsl(32 45% 86%);
+  --color-input: hsl(32 45% 86%);
+  --color-ring: hsl(198 100% 68%);
+  --radius: 0.75rem;
+  --background: 34 53% 94%;
+  --foreground: 8 15% 21%;
+  --muted: 32 45% 89%;
+  --muted-foreground: 8 8% 48%;
+  --border: 32 45% 86%;
+  --primary: 198 100% 68%;
+  --primary-foreground: 8 15% 21%;
+  font-family: 'Onest', Arial, sans-serif;
+}
+
+/* ── Wint dark ───────────────────────────────────────────────────────────────── */
+
+html[data-theme="fint"].dark {
+  --color-background: hsl(8 15% 9%);
+  --color-foreground: hsl(34 40% 88%);
+  --color-card: hsl(8 15% 13%);
+  --color-card-foreground: hsl(34 40% 88%);
+  --color-popover: hsl(8 15% 11%);
+  --color-popover-foreground: hsl(34 40% 88%);
+  --color-primary: hsl(198 100% 62%);
+  --color-primary-foreground: hsl(8 15% 10%);
+  --color-secondary: hsl(8 15% 18%);
+  --color-secondary-foreground: hsl(34 40% 80%);
+  --color-muted: hsl(8 15% 18%);
+  --color-muted-foreground: hsl(34 15% 52%);
+  --color-accent: hsl(198 60% 20%);
+  --color-accent-foreground: hsl(194 87% 88%);
+  --color-destructive: hsl(0 62% 40%);
+  --color-destructive-foreground: hsl(34 40% 92%);
+  --color-border: hsl(8 15% 22%);
+  --color-input: hsl(8 15% 18%);
+  --color-ring: hsl(198 100% 62%);
+  --radius: 0.75rem;
+  --background: 8 15% 9%;
+  --foreground: 34 40% 88%;
+  --muted: 8 15% 18%;
+  --muted-foreground: 34 15% 52%;
+  --border: 8 15% 22%;
+  --primary: 198 100% 62%;
+  --primary-foreground: 8 15% 10%;
+  font-family: 'Onest', Arial, sans-serif;
+}
