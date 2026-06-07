@@ -8,7 +8,7 @@ This app has not been security-audited, penetration tested, or hardened in any m
 
 **Do not expose this to the internet.** It handles your Wint API credentials and gives a pretty clear picture of your company's financial situation. Neither of those things should be a gift to the public internet.
 
-The optional password protection is better than nothing, but it is not a substitute for network-level isolation. If you are asking yourself "could I just put this behind a reverse proxy with a self-signed cert?" — you could, but please don't. Put it on a VPN instead.
+The optional password protection is better than nothing, but it is not a substitute for network-level isolation. If you are asking yourself "could I just put this behind a reverse proxy with a self-signed cert?" — you could, but please don't. Put it on a VPN instead. Or just run it on your laptop with Docker Desktop and call it a day — no network exposure at all.
 
 In short: run it on your local network, keep it off the internet, and we're all fine.
 
