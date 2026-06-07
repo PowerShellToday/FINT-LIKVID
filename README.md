@@ -6,9 +6,76 @@ Self-hosted cash flow forecasting for [Wint (Superkollagen)](https://www.wint.se
 
 **Requirements:** [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 
+### Option A — pre-built images (no git clone needed)
+
+Create a `docker-compose.yml` anywhere on your machine:
+
+```yaml
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: wintstatus
+      POSTGRES_PASSWORD: wintstatus_internal
+      POSTGRES_DB: wintstatus
+      TZ: Europe/Stockholm
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    image: ghcr.io/powershelltoday/fint-likvid-backend:latest
+    environment:
+      POSTGRES_HOST: db
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: wintstatus
+      POSTGRES_USER: wintstatus
+      POSTGRES_PASSWORD: wintstatus_internal
+      APP_ENV: production
+      TZ: Europe/Stockholm
+    volumes:
+      - ./data:/app/data
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+  web:
+    image: ghcr.io/powershelltoday/fint-likvid-web:latest
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+```
+
+Then start it:
+
 ```bash
-git clone <repo-url>
-cd WintStatus-v2
+docker compose up -d
+```
+
+Open **<http://localhost>** — a setup wizard guides you through configuration.
+
+To update to the latest release:
+
+```bash
+docker compose pull
+docker compose up -d
+```
+
+### Option B — build from source
+
+```bash
+git clone https://github.com/PowerShellToday/FINT-LIKVID.git
+cd FINT-LIKVID
 docker compose up --build
 ```
 
@@ -70,6 +137,15 @@ docker compose up --build  # setup wizard appears again
 ```
 
 ## Updating
+
+**Pre-built images (Option A):**
+
+```bash
+docker compose pull
+docker compose up -d
+```
+
+**Built from source (Option B):**
 
 ```bash
 git pull
