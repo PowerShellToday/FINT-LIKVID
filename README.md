@@ -1,4 +1,4 @@
-# Wint Liquidity Visualizer
+# FINT Likvid — **Fi**nansiell **N**etto**T**jänst
 
 Self-hosted cash flow forecasting for [Wint (Superkollagen)](https://www.wint.se) customers. Shows actual and forecasted liquidity for the next 6–24 months, with daily resolution and a running balance graph.
 
