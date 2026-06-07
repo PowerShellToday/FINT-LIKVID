@@ -26,9 +26,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ### Full stack
 
 ```bash
-cp .env.example .env           # fill in POSTGRES_PASSWORD and Wint credentials
 docker compose up --build
 # App at http://localhost — setup wizard on first run
+# No .env file needed. Copy .env.example → .env only to override defaults or run outside Docker.
 ```
 
 ### Iterative backend development
@@ -43,7 +43,7 @@ python -c "from cryptography.fernet import Fernet; import json; open('data/confi
 # Run backend locally
 cd backend
 POSTGRES_HOST=localhost POSTGRES_PORT=5432 \
-POSTGRES_DB=wintstatus POSTGRES_USER=wintstatus POSTGRES_PASSWORD=<your-pw> \
+POSTGRES_DB=wintstatus POSTGRES_USER=wintstatus POSTGRES_PASSWORD=wintstatus_internal \
 CONFIG_PATH=../data/config.json APP_ENV=development \
 uvicorn app.main:app --reload --port 8000
 ```
@@ -181,7 +181,7 @@ All variables are documented in `.env.example`. Key ones:
 
 | Variable | Purpose |
 |---|---|
-| `POSTGRES_PASSWORD` | **Required.** Docker Compose refuses to start without it. |
+| `POSTGRES_PASSWORD` | Defaults to `wintstatus_internal`. DB is internal to Docker — only override if your volume was initialised with a different password. |
 | `WINT_API_USERNAME` / `WINT_API_PASSWORD` | Wint Basic Auth credentials. Only needed on first bootstrap. |
 | `ENCRYPTION_KEY` | Fernet key. Auto-generated to `./data/config.json` on first run. |
 | `WINT_BOOTSTRAP_ON_STARTUP` | `true` = read Wint credentials from env → encrypt → store in DB. `false` = read from DB. |

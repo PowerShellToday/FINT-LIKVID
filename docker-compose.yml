@@ -3,7 +3,7 @@ services:
     image: postgres:16
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-wintstatus}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD must be set in .env}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-wintstatus_internal}
       POSTGRES_DB: ${POSTGRES_DB:-wintstatus}
       TZ: Europe/Stockholm
     volumes:
@@ -21,7 +21,7 @@ services:
       POSTGRES_PORT: 5432
       POSTGRES_DB: ${POSTGRES_DB:-wintstatus}
       POSTGRES_USER: ${POSTGRES_USER:-wintstatus}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD must be set in .env}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-wintstatus_internal}
       APP_ENV: production
       LOG_LEVEL: info
       TZ: Europe/Stockholm
