@@ -2,6 +2,16 @@
 
 Self-hosted cash flow forecasting for [Wint (Superkollagen)](https://www.wint.se) customers. Shows actual and forecasted liquidity for the next 6–24 months, with daily resolution and a running balance graph.
 
+## ⚠️ Security warning
+
+This app has not been security-audited, penetration tested, or hardened in any meaningful way. It was built to run on a trusted local network — think "home lab" or "office NAS that your colleagues can barely find anyway."
+
+**Do not expose this to the internet.** It handles your Wint API credentials and gives a pretty clear picture of your company's financial situation. Neither of those things should be a gift to the public internet.
+
+The optional password protection is better than nothing, but it is not a substitute for network-level isolation. If you are asking yourself "could I just put this behind a reverse proxy with a self-signed cert?" — you could, but please don't. Put it on a VPN instead.
+
+In short: run it on your local network, keep it off the internet, and we're all fine.
+
 ## Quick start
 
 **Requirements:** [Docker Desktop](https://www.docker.com/products/docker-desktop/)
