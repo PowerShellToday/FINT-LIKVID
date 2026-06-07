@@ -59,6 +59,7 @@ volumes:
 Then start it:
 
 ```bash
+mkdir -p ./data
 docker compose up -d
 ```
 
