@@ -4,8 +4,8 @@
 .env.*.local
 
 # Encryption key — back this up separately; never commit it
-data/config.json
-data/
+/data/config.json
+/data/
 
 # Python
 __pycache__/
