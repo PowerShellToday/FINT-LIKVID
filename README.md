@@ -68,12 +68,16 @@ volumes:
 
 Then start it:
 
+> **Note:** The `./data` directory must exist before starting the stack — Docker will not create it for you and will refuse to start if it's missing.
+
 ```bash
 mkdir -p ./data
 docker compose up -d
 ```
 
 Open **<http://localhost>** — a setup wizard guides you through configuration.
+
+> **Port 80 already in use?** Change `"80:80"` to `"8080:80"` in the `ports:` section of the `web` service, then open <http://localhost:8080> instead.
 
 To update to the latest release:
 
