@@ -79,6 +79,8 @@ Open **<http://localhost>** — a setup wizard guides you through configuration.
 
 > **Port 80 already in use?** Change `"80:80"` to `"8080:80"` in the `ports:` section of the `web` service, then open <http://localhost:8080> instead.
 
+For a full walkthrough of all features, see the **[documentation](docs/README.md)**.
+
 To update to the latest release:
 
 ```bash
